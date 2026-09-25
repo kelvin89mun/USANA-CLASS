@@ -477,13 +477,13 @@ function setLang(l) {
   document.getElementById('search').placeholder = cn?'搜索产品或功效...':bm2?'Cari produk atau faedah...':'Search products or benefits...';
 
   // Cart label
-  document.getElementById('cart-label').textContent = cn?'购物车':bm2?'Troli':'Cart';
+  (document.getElementById('cart-label')||{}).textContent = cn?'购物车':bm2?'Troli':'Cart';
 
   // Consult banner
-  document.getElementById('consult-text').textContent = cn?'🤔 不确定怎么选？点击 WhatsApp 咨询我！':bm2?'🤔 Tidak pasti nak pilih apa? WhatsApp saya!':'🤔 Not sure what to choose? Ask me on WhatsApp!';
+  document.getElementById('consult-text')&&(document.getElementById('consult-text').textContent = cn?'🤔 不确定怎么选？点击 WhatsApp 咨询我！':bm2?'🤔 Tidak pasti nak pilih apa? WhatsApp saya!':'🤔 Not sure what to choose? Ask me on WhatsApp!');
 
   // Header tagline
-  const tEl = document.getElementById('header-tagline');
+  const tEl = document.getElementById('tagline');
   if(tEl) tEl.textContent = cn?'科学营养 · 从细胞开始 · 美丽由内而外':bm2?'Nutrisi Saintifik · Dari Sel ke Kecantikan':'Science-Based Nutrition · From Cell to Beauty';
 
   // Quick filter buttons
@@ -497,7 +497,7 @@ function setLang(l) {
 
   // Footer
   document.getElementById('footer-msg').textContent = cn?'有疑问？随时联系我！':bm2?'Ada soalan? Hubungi saya!':'Have questions? Contact me!';
-  document.getElementById('wa-text').textContent = cn?'WhatsApp 联系我':bm2?'Hubungi Saya di WhatsApp':'Contact Me on WhatsApp';
+  (document.getElementById('wa-text')||{}).textContent = cn?'WhatsApp 联系我':bm2?'Hubungi Saya di WhatsApp':'Contact Me on WhatsApp';
   const ct = document.getElementById('consult-text');
   if(ct){
     if(cn) ct.textContent = '🤔 不确定怎么选？点击 WhatsApp 咨询我！';
