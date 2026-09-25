@@ -17,8 +17,8 @@ button{cursor:pointer;font-family:inherit;}
 
 
 
-.lang-toggle{display:flex;border-radius:99px;overflow:hidden;background:rgba(0,0,0,0.45);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border:1.5px solid rgba(255,255,255,0.4);margin-top:4px;}
-.lang-btn{padding:8px 16px;border:none;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s;font-family:inherit;cursor:pointer;}
+.lang-toggle{display:flex;border-radius:99px;overflow:hidden;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border:1.5px solid rgba(255,255,255,0.4);flex-shrink:0;}
+.lang-btn{padding:8px 14px;border:none;font-size:12px;font-weight:700;letter-spacing:0.3px;transition:all 0.2s;font-family:inherit;cursor:pointer;white-space:nowrap;}
 .lang-btn.active{background:white;color:#1a3a8a;}
 .lang-btn:not(.active){background:transparent;color:rgba(255,255,255,0.9);}
 .search-wrap{position:relative;}
@@ -246,7 +246,7 @@ button{cursor:pointer;font-family:inherit;}
   <div class="header-top">
     <div>
       <div style="font-size:32px;font-weight:900;color:white;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.9),0 0 30px rgba(0,0,0,0.7);line-height:1;">USANA</div>
-      <div id="tagline" style="font-size:12px;color:rgba(255,255,255,0.88);margin-top:5px;text-shadow:0 1px 6px rgba(0,0,0,0.7);font-weight:500;letter-spacing:0.3px;">用科学守护您和家人的健康</div>
+      <div id="tagline" style="font-size:12.5px;color:rgba(255,255,255,0.95);margin-top:6px;text-shadow:0 2px 8px rgba(0,0,0,0.9);font-weight:600;letter-spacing:0.5px;background:rgba(0,0,0,0.25);display:inline-block;padding:3px 10px;border-radius:99px;">用科学守护您和家人的健康</div>
     </div>
     <div class="lang-toggle">
       <button class="lang-btn active" onclick="setLang('cn')">中文</button>
@@ -484,7 +484,7 @@ function setLang(l) {
 
   // Header tagline
   const tEl = document.getElementById('tagline');
-  if(tEl) tEl.textContent = cn?'科学营养 · 从细胞开始 · 美丽由内而外':bm2?'Nutrisi Saintifik · Dari Sel ke Kecantikan':'Science-Based Nutrition · From Cell to Beauty';
+  if(tEl) tEl.textContent = cn?'用科学守护您和家人的健康':bm2?'Nutrisi Saintifik · Dari Sel ke Kecantikan':'Science-Based Nutrition · From Cell to Beauty';
 
   // Quick filter buttons
   document.querySelectorAll('.qf-btn').forEach(b => {
@@ -936,7 +936,7 @@ window.addEventListener('popstate', function(e){
       <button class="cart-close" onclick="closeCart()">✕</button>
     </div>
     <div id="cart-items"></div>
-      <div id="cart-total" style="display:none;padding:12px 16px 4px;font-size:15px;font-weight:800;color:#1a7a3f;text-align:right;border-top:1px solid #f0f0f0;margin-top:8px;"></div>
+      <div id="cart-total" style="display:none;padding:12px 16px 10px;text-align:right;border-top:2px solid #f0faf4;margin-top:8px;background:#f8fff8;border-radius:0 0 12px 12px;"></div>
   </div>
 </div>
 
