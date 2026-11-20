@@ -90,14 +90,18 @@ img{display:block;max-width:100%}
 .c-body{flex:1;min-width:0;padding:14px 14px 14px 15px;border-left:3px solid var(--ac);display:flex;flex-direction:column;cursor:pointer}
 .c-tag{align-self:flex-start;max-width:100%;font-size:12px;font-weight:700;color:var(--ac);background:var(--lt);padding:3px 10px;border-radius:99px;margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .c-name{font-family:'Playfair Display',Georgia,serif;font-size:19px;font-weight:800;line-height:1.15;color:var(--ink)}
-.c-sub{margin-top:3px;font-size:14.5px;font-weight:700;color:var(--ac)}
-.c-pain{margin-top:10px;font-size:15px;font-weight:800;line-height:1.45;color:var(--ink)}
-.c-ben{margin-top:7px;display:flex;gap:6px;font-size:13.5px;line-height:1.5;color:var(--ink2)}
-.c-ben i{font-style:normal;font-weight:900;color:var(--ac)}
-.c-price{margin-top:12px;display:flex;align-items:center;gap:8px}
-.c-price small{font-size:12px;font-weight:700;color:var(--price);background:#e9f7ef;padding:2px 9px;border-radius:99px}
-.c-price b{font-size:21px;font-weight:900;color:var(--price);letter-spacing:-.2px}
+.c-sub{margin-top:3px;font-size:14.5px;font-weight:700;color:var(--ac);word-break:keep-all;overflow-wrap:anywhere}
+.c-pain{margin-top:10px;padding:8px 11px;border-radius:12px;background:var(--lt);font-size:14.5px;font-weight:700;line-height:1.5;color:var(--ink);word-break:keep-all;overflow-wrap:anywhere}
 .c-act{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.c-prices{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;column-gap:10px;row-gap:2px;align-items:baseline}
+.c-prices dt{font-size:12.5px;font-weight:700;line-height:1.25;color:var(--muted)}
+.c-prices dd{margin:0;white-space:nowrap}
+.c-prices dd.pm{font-size:clamp(18px,5.4vw,21px);font-weight:900;color:var(--price);letter-spacing:-.2px;line-height:1.2}
+.c-prices dt.ss,.c-prices dd.ss{color:#8a6417}
+.c-prices dd.ss{font-size:clamp(14px,4vw,15.5px);font-weight:800}
+.c-act .btn-soft{background:#eef2f8;color:var(--navy)}
+.c-act .btn-line{color:var(--navy);border-color:var(--navy)}
+.c-act .btn-line.added{background:var(--price);border-color:var(--price);color:#fff}
 .btn-soft,.btn-line{height:46px;border-radius:99px;font-size:14.5px;font-weight:800}
 .btn-soft{background:var(--lt);color:var(--ac)}
 .btn-line{background:#fff;color:var(--ac);border:2px solid var(--ac)}
@@ -120,7 +124,7 @@ img{display:block;max-width:100%}
 footer{padding:22px 20px calc(110px + var(--safe-b));text-align:center;color:var(--muted);font-size:12px;line-height:1.8}
 
 /* ---------- Mini bar ---------- */
-.minibar{position:fixed;top:0;left:0;right:0;max-width:560px;margin:0 auto;z-index:50;display:flex;align-items:center;gap:8px;padding:calc(8px + var(--safe-t)) 12px 8px 16px;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 4px 18px rgba(15,35,80,.1);transform:translateY(-120%);transition:transform .28s ease}
+.minibar{position:fixed;top:0;left:0;right:0;max-width:560px;margin:0 auto;z-index:50;display:flex;align-items:center;gap:8px;padding:calc(8px + var(--safe-t)) 12px 8px 16px;background:#fff;box-shadow:0 4px 18px rgba(15,35,80,.1);transform:translateY(-120%);transition:transform .28s ease}
 .minibar.show{transform:none}
 .mb-label{flex:1;min-width:0;font-weight:800;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mb-search{flex-shrink:0;width:40px;height:40px;border-radius:99px;background:#eef1f6;display:grid;place-items:center}
@@ -198,9 +202,6 @@ footer{padding:22px 20px calc(110px + var(--safe-b));text-align:center;color:var
 .cart-total{display:flex;align-items:baseline;justify-content:space-between;padding:16px 20px 4px}
 .cart-total span{font-size:15px;font-weight:800;color:var(--ink2)}
 .cart-total b{font-size:25px;font-weight:900;color:var(--price)}
-.c-ss{margin-top:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.c-ss span{font-size:12px;font-weight:700;color:#8a6417;background:#fbf1dc;padding:2px 9px;border-radius:99px}
-.c-ss b{font-size:15.5px;font-weight:800;color:#8a6417}
 .sh-ss{margin:8px 18px 0;padding:11px 15px;border-radius:14px;background:#fbf4e3;border:1px solid #f0e2bf}
 .sh-ss div{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
 .sh-ss span{font-size:13.5px;font-weight:800;color:#8a6417}
@@ -380,7 +381,7 @@ var T = {
   trust:'连续 8 年 马来西亚 No.1 综合膳食补充品牌', trustSrc:'来源：Euromonitor International，2018–2025',
   needTitle:'你最想改善什么？', seeAll:'全部 {n} 款', all:'全部产品', allDesc:'慢慢看，找到适合你和家人的营养 😊',
   unit:'款', clear:'✕ 看全部', searchDesc:'找到 {n} 款相关产品', noResult:'没有找到相关产品', noResultDesc:'没关系，直接问我，我帮你找 👇',
-  pricePre:'会员价', ssTag:'订购省', ssCard:'订购省再 9 折', ssLong:'选择「订购省」定期配送，在会员价上再享 9 折。', ssTotal:'选订购省只需', details:'查看详情', add:'+ 加入', added:'✓ 已加入', zoom:'🔍 大图',
+  pricePre:'会员价', ssTag:'订购省', ssCard:'订购省 9 折', ssLong:'选择「订购省」定期配送，在会员价上再享 9 折。', ssTotal:'选订购省只需', details:'查看详情', add:'+ 加入', added:'✓ 已加入', zoom:'🔍 大图',
   suitable:'👤 适合谁', benefits:'✅ 主要功效', ingredients:'🧪 主要成份', usage:'💊 怎么使用',
   src:'参考来源：askthescientists.com（USANA 官方科学资讯网）', related:'💡 常一起搭配', tapZoom:'🔍 点击看大图', share:'🔗 分享', copied:'链接已复制 ✓',
   waAsk:'WhatsApp 询问', addBar:'🛒 加入', addedBar:'✓ 已加入', fabCart:'我的选择', toastAdded:'已加入：',
@@ -396,7 +397,7 @@ var T = {
   trust:'No.1 Combination Dietary Supplements Brand in Malaysia, 8 years in a row', trustSrc:'Source: Euromonitor International, 2018–2025',
   needTitle:'What would you like to improve?', seeAll:'All {n}', all:'All Products', allDesc:'Take your time and find the right nutrition for you and your family 😊',
   unit:'items', clear:'✕ Show all', searchDesc:'{n} matching products', noResult:'No matching products', noResultDesc:'No worries, ask me and I\u2019ll help you find the right one 👇',
-  pricePre:'Member', ssTag:'Subscribe & Save', ssCard:'Subscribe & Save 10% off', ssLong:'Choose Subscribe & Save for regular deliveries and get an extra 10% off the member price.', ssTotal:'With Subscribe & Save', details:'Details', add:'+ Add', added:'✓ Added', zoom:'🔍 Zoom',
+  pricePre:'Member', ssTag:'Subscribe & Save', ssCard:'Subscribe −10%', ssLong:'Choose Subscribe & Save for regular deliveries and get an extra 10% off the member price.', ssTotal:'With Subscribe & Save', details:'Details', add:'+ Add', added:'✓ Added', zoom:'🔍 Zoom',
   suitable:'👤 Suitable for', benefits:'✅ Key benefits', ingredients:'🧪 Key ingredients', usage:'💊 How to use',
   src:'Source: askthescientists.com (USANA\u2019s official science site)', related:'💡 Often paired with', tapZoom:'🔍 Tap to enlarge', share:'🔗 Share', copied:'Link copied ✓',
   waAsk:'Ask on WhatsApp', addBar:'🛒 Add', addedBar:'✓ Added', fabCart:'My picks', toastAdded:'Added: ',
@@ -412,7 +413,7 @@ var T = {
   trust:'Jenama Suplemen Diet Kombinasi No.1 di Malaysia, 8 tahun berturut-turut', trustSrc:'Sumber: Euromonitor International, 2018–2025',
   needTitle:'Apa yang anda ingin perbaiki?', seeAll:'Semua {n}', all:'Semua Produk', allDesc:'Lihat dengan santai dan cari nutrisi yang sesuai untuk anda sekeluarga 😊',
   unit:'produk', clear:'✕ Semua', searchDesc:'{n} produk berkaitan', noResult:'Tiada produk berkaitan', noResultDesc:'Tak apa, tanya saya, saya bantu carikan 👇',
-  pricePre:'Harga Ahli', ssTag:'Langgan & Jimat', ssCard:'Langgan & Jimat 10%', ssLong:'Pilih Langgan & Jimat untuk penghantaran berkala dan nikmati diskaun tambahan 10% daripada harga ahli.', ssTotal:'Dengan Langgan & Jimat', details:'Butiran', add:'+ Tambah', added:'✓ Ditambah', zoom:'🔍 Besar',
+  pricePre:'Harga Ahli', ssTag:'Langgan & Jimat', ssCard:'Langgan −10%', ssLong:'Pilih Langgan & Jimat untuk penghantaran berkala dan nikmati diskaun tambahan 10% daripada harga ahli.', ssTotal:'Dengan Langgan & Jimat', details:'Butiran', add:'+ Tambah', added:'✓ Ditambah', zoom:'🔍 Besar',
   suitable:'👤 Sesuai untuk', benefits:'✅ Manfaat utama', ingredients:'🧪 Bahan utama', usage:'💊 Cara penggunaan',
   src:'Sumber: askthescientists.com (laman sains rasmi USANA)', related:'💡 Sering digabungkan', tapZoom:'🔍 Tekan untuk besarkan', share:'🔗 Kongsi', copied:'Pautan disalin ✓',
   waAsk:'Tanya di WhatsApp', addBar:'🛒 Tambah', addedBar:'✓ Ditambah', fabCart:'Pilihan saya', toastAdded:'Ditambah: ',
@@ -520,9 +521,8 @@ function card(p){
       '<h3 class="c-name">' + esc(p.name) + '</h3>' +
       (lang === 'cn' ? '<div class="c-sub">' + esc(p.nameCn) + '</div>' : '') +
       (pain ? '<p class="c-pain">' + esc(pain) + '</p>' : '') +
-      (ben ? '<p class="c-ben"><i>✓</i><span>' + esc(ben) + '</span></p>' : '') +
-      (p.price ? '<div class="c-price"><small>' + t('pricePre') + '</small><b>RM ' + p.price + '</b></div>' +
-        '<div class="c-ss"><span>' + t('ssCard') + '</span><b>' + rm(p.price * 0.9) + '</b></div>' : '') +
+      (p.price ? '<dl class="c-prices"><dt>' + t('pricePre') + '</dt><dd class="pm">RM ' + p.price + '</dd>' +
+        '<dt class="ss">' + t('ssCard') + '</dt><dd class="ss">' + rm(p.price * 0.9) + '</dd></dl>' : '') +
       '<div class="c-act"><button class="btn-soft" data-act="open" data-id="' + p.id + '">' + t('details') + '</button>' +
       '<button class="btn-line' + (inCart ? ' added' : '') + '" data-act="add" data-id="' + p.id + '">' + (inCart ? t('added') + ' (' + inCart.qty + ')' : t('add')) + '</button></div>' +
     '</div></article>';
