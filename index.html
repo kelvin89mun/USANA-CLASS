@@ -342,9 +342,9 @@ var CATS = [
   {k:'energy', ico:'💪', tint:'#ffeedd', ids:['cellsentials','coq10','biomega','vitamind3'],
    cn:'每天精力', en:'Daily Energy', bm:'Tenaga Harian',
    d:{cn:'常常觉得累、下午就没精神？从每天的细胞营养开始。', en:'Often tired by the afternoon? Start with daily cellular nutrition.', bm:'Selalu penat waktu petang? Mulakan dengan nutrisi sel setiap hari.'}},
-  {k:'brain', ico:'🧠', tint:'#efe9ff', ids:['copaprime','cellsentials','biomega'],
-   cn:'脑力记忆', en:'Brain & Memory', bm:'Otak & Ingatan',
-   d:{cn:'记性变差、难以专注？给大脑需要的营养。', en:'Memory slipping or hard to focus? Give your brain the nutrients it needs.', bm:'Ingatan makin lemah atau susah fokus? Beri otak nutrisi yang diperlukan.'}},
+  {k:'brain', ico:'🧠', tint:'#efe9ff', ids:['copaprime','visionex','biomega','cellsentials'],
+   cn:'脑力护眼', en:'Brain & Eyes', bm:'Otak & Mata',
+   d:{cn:'记性变差、看手机电脑眼睛累？大脑和眼睛的营养一起补。', en:'Memory slipping or eyes tired from screens? Nourish your brain and eyes together.', bm:'Ingatan makin lemah atau mata penat tengok skrin? Beri nutrisi untuk otak dan mata.'}},
   {k:'bone', ico:'🦴', tint:'#e6f0ff', ids:['magnecal','procosa','biomega','vitamind3'],
    cn:'骨骼关节', en:'Bone & Joint', bm:'Tulang & Sendi',
    d:{cn:'膝盖酸、腰背痛、上楼吃力？骨骼关节需要长期保养。', en:'Aching knees, back pain, struggling with stairs? Bones and joints need long-term care.', bm:'Lutut sengal, sakit belakang, susah naik tangga? Tulang dan sendi perlu dijaga.'}},
@@ -363,9 +363,9 @@ var CATS = [
   {k:'weight', ico:'⚖️', tint:'#ffe9dc', ids:['prometa','nutrimeal','fibergy','dtxtea'],
    cn:'体重管理', en:'Weight Management', bm:'Pengurusan Berat',
    d:{cn:'节食运动也不见效？从代谢、饱足感和均衡营养着手。', en:'Diet and exercise not working? Start with metabolism, fullness and balanced nutrition.', bm:'Diet dan senaman tak berkesan? Mulakan dengan metabolisme, rasa kenyang dan nutrisi seimbang.'}},
-  {k:'eye', ico:'👁️', tint:'#e2f5f7', ids:['visionex','polyc'],
-   cn:'护眼视力', en:'Eye Health', bm:'Kesihatan Mata',
-   d:{cn:'整天看手机电脑，眼睛又酸又干？给眼睛多一份保护。', en:'Screens all day, eyes tired and dry? Give your eyes extra protection.', bm:'Tengok skrin sepanjang hari, mata penat dan kering? Beri mata perlindungan lebih.'}},
+  {k:'sleep', ico:'🌙', tint:'#e4e8fb', norel:true, ids:['magnecal','probiotic','digestive','palmetto','estropro'],
+   cn:'睡眠质量', en:'Sleep Quality', bm:'Kualiti Tidur',
+   d:{cn:'夜里常醒、睡不好？先看是什么吵醒你：半夜起来小便、更年期潮热、胃胀不舒服，还是营养不足。长期失眠请先看医生。', en:'Waking up at night? First look at what wakes you: getting up to pee, menopausal hot flushes, a bloated stomach, or low nutrition. For long-term insomnia, see a doctor first.', bm:'Selalu terjaga waktu malam? Lihat dulu puncanya: bangun untuk kencing, rasa panas menopaus, perut kembung, atau kurang nutrisi. Jika insomnia berpanjangan, jumpa doktor dahulu.'}},
   {k:'menwomen', ico:'👫', tint:'#fbe8f7', ids:['estropro','palmetto'],
    cn:'男女保健', en:'Men & Women', bm:'Lelaki & Wanita',
    d:{cn:'更年期不适、夜尿频繁？男女各有专属配方。', en:'Menopause discomfort or frequent night-time urination? Dedicated formulas for women and men.', bm:'Tidak selesa akibat menopaus atau kerap kencing waktu malam? Formula khas untuk wanita dan lelaki.'}},
@@ -436,6 +436,7 @@ var SYN = [
  [['皮肤','美容','胶原','皱','暗沉','skin','beauty','collagen','kulit','kolagen','cantik'],['collagen','proflavanol','polyc']],
  [['孩子','小孩','儿童','宝宝','挑食','kid','child','anak','kanak','budak'],['usanimals','probiotic']],
  [['眼','视力','蓝光','eye','vision','mata','penglihatan'],['visionex']],
+ [['睡','失眠','夜醒','sleep','insomnia','tidur'],['magnecal','probiotic','digestive','palmetto','estropro']],
  [['更年期','潮热','女性','荷尔蒙','menopause','hormone','women','menopaus','wanita','hormon'],['estropro']],
  [['前列腺','夜尿','男性','prostate','prostat','lelaki','kencing'],['palmetto']],
  [['瘦','减肥','减重','代谢','体重','肚子','weight','slim','metabolism','kurus','berat','diet','metabolisme','buncit'],['prometa','nutrimeal','fibergy']],
@@ -599,7 +600,7 @@ window.addEventListener('popstate', function(){ if (stack.length){ var n = stack
 /* ---------- Product sheet ---------- */
 function related(p){
   var out = [];
-  CATS.forEach(function(c){ if (c.ids.indexOf(p.id) >= 0) c.ids.forEach(function(id){ if (id !== p.id && out.indexOf(id) < 0) out.push(id); }); });
+  CATS.forEach(function(c){ if (!c.norel && c.ids.indexOf(p.id) >= 0) c.ids.forEach(function(id){ if (id !== p.id && out.indexOf(id) < 0) out.push(id); }); });
   if (!out.length) ['cellsentials', 'biomega', 'probiotic'].forEach(function(id){ if (id !== p.id) out.push(id); });
   return out.slice(0, 5).map(function(id){ return PM[id]; }).filter(Boolean);
 }
